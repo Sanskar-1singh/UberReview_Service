@@ -31,6 +31,9 @@ public class Bookings extends BaseModel{
     @ManyToOne(cascade = CascadeType.ALL)
     private Driver driver;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Passenger passenger;
+
 
 }
 
