@@ -37,6 +37,4 @@ public class Review {
     @LastModifiedDate
     private Date updatedAt;
 
-
-
 }
