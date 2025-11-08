@@ -6,14 +6,13 @@ import com.example.uberreviewservice.models.Review;
 import com.example.uberreviewservice.repositories.BookingRepository;
 import com.example.uberreviewservice.repositories.DriverRepository;
 import com.example.uberreviewservice.repositories.ReviewRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
 import java.lang.Exception;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ReviewService implements CommandLineRunner {
@@ -31,24 +30,25 @@ public class ReviewService implements CommandLineRunner {
         this.driverRepository = driverRepository;
     }
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         System.out.println("************");
 
-        Review review = Review.builder().content("amazing ride facility")
-                .rating(5.0)
-                .build();
-      reviewRepository.save(review);
+//        Review review = Review.builder().content("amazing ride facility")
+//                .rating(5.0)
+//                .build();
+//      reviewRepository.save(review);
+//
+//        List<Review> x = reviewRepository.findAll();
+//        System.out.println(x);
+//        reviewRepository.deleteById(1l);
 
-        List<Review> x = reviewRepository.findAll();
-        System.out.println(x);
-        reviewRepository.deleteById(1l);
-
-        Optional<Driver> y = driverRepository.findById(1l);
-        System.out.println(y);
-          System.out.println("bye bye");
-        Bookings b = bookingRepository.findById(1l);
-
-        System.out.println(b);
+//        Optional<Driver> y = driverRepository.findById(1l);
+//        System.out.println(y);
+//          System.out.println("bye bye");
+//        Bookings b = bookingRepository.findById(1l);
+//
+//        System.out.println(b);
 //        List<Driver> d=driverRepository.findByIdAndLicencenumber(1l,"LIC1001");
 //        System.out.println("hii"+d);
 //
@@ -58,10 +58,22 @@ public class ReviewService implements CommandLineRunner {
 //            System.out.println("hii evryone"+b.getBookingStatus());
 //        }
 
+//
+//        Optional<Driver> z = driverRepository.rawfindByIdAndLicencenumber(1l,"LIC1001");
 
-        Optional<Driver> z = driverRepository.rawfindByIdAndLicencenumber(1l,"LIC1001");
+        List<Long> a=new ArrayList<>(Arrays.asList(1l,2l,3l,4l,5l));
 
+        List<Driver> d=driverRepository.findAllByIdIn(a);
+        System.out.println(d);
 
+//        // one way to solve N+1 Problem>>
+//        List<Bookings> bookings = bookingRepository.findAllByDriverIn(d);
+//        System.out.println(bookings);
+     int cnt=0;
+        for(Driver driver:d){
+            List<Bookings> c=driver.getBookings();
+            c.forEach(booking->System.out.println(booking));
+        }
 
 
 
