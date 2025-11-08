@@ -2,6 +2,7 @@ package com.example.uberreviewservice.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import lombok.*;
 
@@ -14,7 +15,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Driver extends BaseModel{
+public class  Driver extends BaseModel{
 
     //DRIVER HAS MANY BOOKING 1:M
 
@@ -23,8 +24,15 @@ public class Driver extends BaseModel{
     @Column(nullable = false,unique = true)
     private String licencenumber;
 
-    @OneToMany(mappedBy = "driver")
+    @OneToMany(mappedBy = "driver",fetch = FetchType.LAZY)
     private List<Bookings> bookings=new ArrayList<>();
 
-
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "name='" + name + '\'' +
+                ", licencenumber='" + licencenumber + '\'' +
+                ", bookings=" +
+                '}';
+    }
 }

@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class Bookings extends BaseModel{
 
-    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE},fetch = FetchType.LAZY)
     private Review review;
 
     @Enumerated(value=EnumType.STRING)
@@ -42,8 +42,25 @@ public class Bookings extends BaseModel{
  * relation between Booking and review
  * 1 booking has one review and one review has one booking i.e. 1:1 relation>>>>
  *
+ * 1: 1 anyone can have foreign key>>>
+ *
  * now 1:M assocaitions
  *  a driver has many review but review belongs to a one driver
+ *  1 : M->foreign key contains
+ *
+ *  Now M:M associations
+ *here we required a join table
+ *
+ * Doctor has many patient through join table
+ * Patient has many doctor thorugh join table
+ *
+ * @OneToOne->Eager
+ * OneToMAny->LAZY
+ * ManyToMany->LAzy
+ * ManyToOne->Eager
+ *
+ *
+ *
  *
  *
  */
