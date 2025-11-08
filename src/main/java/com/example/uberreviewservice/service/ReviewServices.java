@@ -1,0 +1,17 @@
+package com.example.uberreviewservice.service;
+
+import com.example.uberreviewservice.models.Review;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+
+public interface ReviewServices {
+
+    public Optional<Review> findReviewById(Long id);
+    public List<Review> findAllReviews();
+
+    public Boolean deleteReviewById(Long id);
+
+}

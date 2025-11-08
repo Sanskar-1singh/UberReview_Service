@@ -8,13 +8,13 @@ CREATE TABLE booking_review
     CONSTRAINT pk_booking_review PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS bookings
+CREATE TABLE bookings
 (
     id             BIGINT AUTO_INCREMENT NOT NULL,
     created_at     datetime              NOT NULL,
     updated_at     datetime              NOT NULL,
     review_id      BIGINT                NULL,
-    booking_status ENUM('SCHEDULE','CANCELLED','COMPLETED')NULL,
+    booking_status ENUM('SCHEDULE','CANCELLED','COMPLETED') NULL,
     start_time     datetime              NULL,
     end_time       datetime              NULL,
     total_distance BIGINT                NULL,
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS bookings
     CONSTRAINT pk_bookings PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS driver
+CREATE TABLE driver
 (
     id            BIGINT AUTO_INCREMENT NOT NULL,
     created_at    datetime              NOT NULL,
@@ -31,17 +31,19 @@ CREATE TABLE IF NOT EXISTS driver
     name          VARCHAR(255)          NULL,
     licencenumber VARCHAR(255)          NOT NULL,
     phone_number  VARCHAR(255)          NULL,
+    aadhar_number VARCHAR(255)          NULL,
+    address       VARCHAR(255)          NULL,
     CONSTRAINT pk_driver PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS driver_review
+CREATE TABLE driver_review
 (
     id                    BIGINT       NOT NULL,
     driver_review_content VARCHAR(255) NULL,
     CONSTRAINT pk_driverreview PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS passenger
+CREATE TABLE passenger
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -50,7 +52,7 @@ CREATE TABLE IF NOT EXISTS passenger
     CONSTRAINT pk_passenger PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS passenger_review
+CREATE TABLE passenger_review
 (
     driver_review_id         BIGINT       NOT NULL,
     passenger_review_content VARCHAR(255) NOT NULL,

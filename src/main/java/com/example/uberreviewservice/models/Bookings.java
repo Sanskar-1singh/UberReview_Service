@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class Bookings extends BaseModel{
 
-    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE},fetch = FetchType.EAGER)
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE},fetch = FetchType.LAZY)
     private Review review;
 
     @Enumerated(value=EnumType.STRING)
