@@ -89,4 +89,33 @@ public class ReviewService implements CommandLineRunner {
  * select b1_0.id,b1_0.booking_status,b1_0.created_at,b1_0.driver_id,b1_0.end_time,b1_0.passenger_id,
  * b1_0.review_id,b1_0.start_time,b1_0.total_distance,b1_0.updated_at from bookings b1_0
  * left join passenger p1_0 on p1_0.id=b1_0.passenger_id where p1_0.id=?
+ *
+ * focus on fetch mode it is very important>>>EAGER/LAZY
+ *
+ * LET DISCUSS N+1 PROBLEM>>>
+ * to get data from DB for 1 query we make N+1 query>>>
+ *
+ *
+ * we have an api which look liek somthing
+ * GET-> /api/v1/drivers/bookings
+ *
+ * req_body:{
+ *     driverId:[2,3,4,5,6]
+ * }
+ * executed response->we should be able to fetch drivers and bookings for each drivers
+ *
+ * W.R.T overall app performance,in drive model,bookings should be laod lazily
+ * firstly we make 1 query to get all the driver id and then we will iterate on the driver list and make query to db to get
+ * booking details again therefore for 1 query we are making again N query for booking therefore it is known as N+1 problem
+ *
+ * and if we do eager loading then it is harming our RAM which is also very bad>>>
+ *  SOLUTION->
+ *
+ *  1.first make query to get all the driver list
+ *  and then make query like (select * from booking where driver_id IN(1,2,3,....);
+ *
+ *  2. using JPA->
+ *
+ *
+ *
  */
