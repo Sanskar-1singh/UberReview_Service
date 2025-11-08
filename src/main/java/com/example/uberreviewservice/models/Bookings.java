@@ -29,7 +29,7 @@ public class Bookings extends BaseModel{
     private Long totalDistance;
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Driver driver;
+    private Driver driver;//why not booking join eagerly making join on Driver table????
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Passenger passenger;

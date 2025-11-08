@@ -10,3 +10,8 @@ public interface ReviewRepository extends JpaRepository<Review,Long> {
 
 
 }
+
+/**
+ * database migrations or data versioning or schema versioning>>
+ *
+ */

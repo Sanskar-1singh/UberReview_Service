@@ -28,9 +28,14 @@ public class  Driver extends BaseModel{
     @Column(nullable = false,unique = true)
     private String licencenumber;
 
+    private String phoneNumber;
+
+    private String aadharNumber;
+
+    private String address;
+
     @OneToMany(mappedBy = "driver",fetch = FetchType.LAZY)
-    @Fetch(FetchMode.SUBSELECT)
-    private List<Bookings> bookings=new ArrayList<>();
+    private List<Bookings> bookings;
 
     @Override
     public String toString() {
