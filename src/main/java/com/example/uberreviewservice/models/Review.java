@@ -23,6 +23,10 @@ public class Review extends BaseModel{
     @Column(nullable = false)
    private Double rating;
 
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
+    private Bookings booking;
+
     @Override
     public String toString() {
         return "Review{" +
