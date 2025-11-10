@@ -23,7 +23,7 @@ public class Review extends BaseModel{
     @Column(nullable = false)
    private Double rating;
 
-    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private Bookings booking;
 
@@ -34,6 +34,7 @@ public class Review extends BaseModel{
                 ", content='" + content + '\'' +
                 ", rating=" + rating +
                 ", createdAt=" + createdAt +
+                   booking.getBookingStatus()+
                 ", updatedAt=" + updatedAt +
                 '}';
     }

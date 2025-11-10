@@ -1,7 +1,4 @@
 
-
-
-
 ALTER TABLE booking_review
     ADD booking_id BIGINT NULL;
 

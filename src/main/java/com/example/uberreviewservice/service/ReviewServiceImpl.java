@@ -1,4 +1,4 @@
-package com.example.uberreviewservice.services;
+package com.example.uberreviewservice.service;
 
 import com.example.uberreviewservice.models.Review;
 import com.example.uberreviewservice.repositories.ReviewRepository;

@@ -20,6 +20,8 @@ public class CreateReviewDtoToReviewAdapterImpl implements CreateReviewDtoToRevi
     }
     @Override
     public Review convertDto(CreateReviewDtos createReviewDto) {
+        //here we take optional because if booking comes out to be null in that case it will handle that>>>
+        //we use ? wildcard to ensure that every kind of data can cames>>>
         Optional<Bookings> booking = bookingRepository.findById(createReviewDto.getBookingId());
         return booking.map(value -> Review.builder()
                 .rating(createReviewDto.getRating())

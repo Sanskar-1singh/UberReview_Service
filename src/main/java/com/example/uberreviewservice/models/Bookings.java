@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -13,9 +14,6 @@ import java.util.Date;
 @AllArgsConstructor
 
 public class Bookings extends BaseModel{
-
-    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE},fetch = FetchType.LAZY)
-    private Review review;
 
     @Enumerated(value=EnumType.STRING)
     private BookingStatus bookingStatus; //HAS_A RELATION(COMPOSITION)
